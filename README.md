@@ -79,7 +79,7 @@ SELECT * FROM information_schema.user_privileges WHERE GRANTEE="'sys_temp'@'loca
 SYSTEM mysql -u sys_temp -p
 SELECT user();
 ```
-![select_user](https://github.com/kirill-kornienko/DDL-DML/blob/main/select%20user.png)
+![select_user](https://github.com/kirill-kornienko/DDL-DML/blob/main/user%20sys_temp.png)
 
 Для смены типа аутентификации с sha2 используйте запрос:
 
