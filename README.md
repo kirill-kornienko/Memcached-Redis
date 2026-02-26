@@ -43,7 +43,7 @@ Master-Slave масштабирование: основные плюсы
 
 ### Ответ
 
-Архитектура решения
+### Архитектура решения
 
 Cоздадим:
 
@@ -53,7 +53,7 @@ Cоздадим:
 
 Мастер-сервер: единая точка входа с представлением (VIEW) и правилами маршрутизации
 
-1. Создание структуры проекта
+### 1. Создание структуры проекта
 
 ```bash
 # Создаем директорию проекта
@@ -64,7 +64,7 @@ cd ~/sharding-project
 mkdir -p conf/{master,shard1,shard2,shard3}
 mkdir -p data/{master,shard1,shard2,shard3}
 ```
-2. Создаем Docker Compose файл
+### 2. Создаем Docker Compose файл
 
 ```bash
 nano docker-compose.yml:
@@ -167,9 +167,9 @@ services:
       retries: 5
 ```
 
-3. Создаем SQL скрипты для инициализации
+### 3. Создаем SQL скрипты для инициализации
    
-Скрипты для шардов
+### Скрипты для шардов
 
 ```bash
    nano conf/shard1/init.sql
@@ -382,7 +382,7 @@ INSERT INTO shops (name, address, country) VALUES
 ON CONFLICT (shop_id) DO NOTHING;
 ```
 
-Создаем скрипт для мастер сервера
+### Создаем скрипт для мастер сервера
 
 ```bash
 nano conf/master/init.sql
@@ -585,7 +585,7 @@ SELECT 'Users in shard3 (user_id % 3 = 2):' as info;
 SELECT * FROM users_shard3;
 ```
 
-4. Запуск систем
+### 4. Запуск систем
 
 ```bash
 docker compose up -d
@@ -596,14 +596,14 @@ docker compose ps
 
 ![docker_ps](https://github.com/kirill-kornienko/Replic2/blob/main/docker_up.png)
 
-Подключение к мастер серверу
+### Подключение к мастер серверу
 
 ```bash
 # Подключаемся к мастеру
 docker exec -it postgres_master psql -U postgres
 ```
 
-Проверка распределения данных
+### Проверка распределения данных
 
 ```sql
 -- Смотрим всех пользователей через единое представление
@@ -622,7 +622,7 @@ SELECT * FROM users_shard3;
 
 ![users](https://github.com/kirill-kornienko/Replic2/blob/main/users.png)
 
-Тестирование вставки новых данных
+### Тестирование вставки новых данных
 
 ```sql
 -- Вставляем нового пользователя
@@ -637,7 +637,7 @@ WHERE user_id = 7;  -- 7 % 3 = 1, должен быть в shard2
 
 ![test_insert](https://github.com/kirill-kornienko/Replic2/blob/main/test_insert.png)
 
-Проверка вертикального шардинга:
+### Проверка вертикального шардинга:
 
 ```sql
 -- Книги должны быть на shard1
@@ -649,7 +649,7 @@ SELECT * FROM shops;
 
 ![test_shard](https://github.com/kirill-kornienko/Replic2/blob/main/test_books_shops.png)
 
-5. Блок-схема архитектуры
+### 5. Блок-схема архитектуры
 
 ```text
 ┌─────────────────────────────────────────────────────────────────────┐
@@ -704,7 +704,7 @@ SELECT * FROM shops;
 └─────────────────┘ └─────────────────┘ └─────────────────┘ └─────────────────┘
 ```
 
-6. Режим работы серверов
+### 6. Режим работы серверов
 
 ```text
 Сервер	Тип шардинга	                                  Что хранит	                                             Режим работы
