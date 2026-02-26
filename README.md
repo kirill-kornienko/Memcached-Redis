@@ -181,7 +181,7 @@ SELECT * FROM test_table;
 docker stop mysql_master mysql_slave
 ```
 
-1[docker_stop](https://github.com/kirill-kornienko/Replic1/blob/main/docker_stop.png)
+![docker_stop](https://github.com/kirill-kornienko/Replic1/blob/main/docker_stop.png)
 
 
 
