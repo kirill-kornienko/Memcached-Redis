@@ -711,7 +711,7 @@ SELECT * FROM shops;
 master	Центральный маршрутизатор       	              Нет данных, только внешние таблицы и правила	           Proxy / Router (принимает все запросы, перенаправляет на шарды)
 shard1	Горизонтальный (users) + Вертикальный (books)	  users (user_id % 3 = 0), books	                         Data node (чтение/запись своих данных)
 shard2	Горизонтальный (users) + Вертикальный (shops)	  users (user_id % 3 = 1), shops	                         Data node (чтение/запись своих данных)
-shard3	Горизонтальный (users)	                        users (user_id % 3 = 2)	                                 Data node (чтение/запись своих данных)
+shard3	Горизонтальный (users)	                          users (user_id % 3 = 2)	                                 Data node (чтение/запись своих данных)
 ```
 
    
