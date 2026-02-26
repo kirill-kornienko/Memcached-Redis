@@ -78,6 +78,7 @@ touch Dockerfile_master Dockerfile_slave master.cnf master.sql slave.cnf slave.s
 4. Сборка Docker- образов
    
 ```bash
+
 # Собираем образ мастера
 docker build -t mysql_master -f Dockerfile_master .
 
@@ -88,6 +89,7 @@ docker build -t mysql_slave -f Dockerfile_slave .
 4. Создаем сети Docker
    
 ```bash
+
 # Создаем сеть для репликации
 docker network create replication
 
