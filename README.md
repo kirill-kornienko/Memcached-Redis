@@ -52,7 +52,7 @@ Master записывает все изменения в специальный 
 
 1. Подготовка рабочей директории
 
-```bash
+``` bash
 # Создаем папку для проекта
 mkdir ~/mysql-replication
 cd ~/mysql-replication
@@ -77,7 +77,7 @@ touch Dockerfile_master Dockerfile_slave master.cnf master.sql slave.cnf slave.s
 
 4. Сборка Docker- образов
    
-```bash
+``` bash
 
 # Собираем образ мастера
 docker build -t mysql_master -f Dockerfile_master .
@@ -88,7 +88,7 @@ docker build -t mysql_slave -f Dockerfile_slave .
 
 4. Создаем сети Docker
    
-```bash
+``` bash
 
 # Создаем сеть для репликации
 docker network create replication
@@ -101,7 +101,7 @@ docker network ls
 
 5. Запускаем контейнеры на свободных портах (порт 3306 занят локаным MySQL)
    
-```bash
+``` bash
 # Запускаем мастер на порту 33061 
 sudo docker run -d \
   --name mysql_master \
@@ -125,12 +125,12 @@ docker ps
    
 Проверяем статус репликации на слейве
 
-```bash
+``` bash
 # Подключаемся к слейву
 docker exec -it mysql_slave mysql -u root -p
 ```
 
-```sql
+``` sql
 SHOW REPLICA STATUS\G
 ```
 
