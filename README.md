@@ -80,4 +80,9 @@
 
 Отправляет пустой UDP заголовок на каждый порт. Ответ ICMP ошибка о недостижимости порта (тип 3, код 3) - порт закрыт. Другие ICMP ошибки недостижимости - порт фильтруется. После нескольких попыток без ответа - порт открыт|фильтруется. Ответ UDP - порт открыт.
 
+![nmap_udp](https://github.com/kirill-kornienko/Security/blob/main/nmap_udp.png)
+
+![wireshark_udp](https://github.com/kirill-kornienko/Security/blob/main/wireshark_udp.png)
+
+
 
